@@ -40,3 +40,4 @@ void menu()
     }
 }
 
+menu();
