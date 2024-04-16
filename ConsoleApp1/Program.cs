@@ -44,7 +44,7 @@ void Menu()
         case 1: Registrar(); break; 
         case 2: ListaBandas(); break;
         case 3: Avaliar(); break;
-        case 4: Console.WriteLine("Opção escolhida: " + opcaoN); break;
+        case 4: MediaAvaliacao(); break;
         case 5: Console.WriteLine("Opção escolhida: " + opcaoN); break;
         default: Console.WriteLine("Opção inválida!"); break;
     }
@@ -121,7 +121,26 @@ void Avaliar()
 
 void MediaAvaliacao()
 {
+    Console.Clear();
+    Console.WriteLine("Ver avaliação de banda: ");
+    string nomeBanda = Console.ReadLine()!;
+    if (bandasRegistradas.ContainsKey(nomeBanda))
+    {
+        List<int> notasBanda = bandasRegistradas[nomeBanda];
+        Console.WriteLine($"Média da banda {nomeBanda} é { notasBanda.Average()}");
+        Console.WriteLine("\nVoltar ao menu principal");
+        Console.ReadKey();
+        Console.Clear();
+        Menu();
 
+    }
+    else
+    {
+        Console.WriteLine($"Banda {nomeBanda} inexistente!");
+        Console.ReadKey();
+        Console.Clear();
+        Menu();
+    }
 }
 
 void Sair()
@@ -193,9 +212,9 @@ static void Estoque()
     {
         Console.WriteLine($"O produto '{nomeProduto}' não está em estoque.");
     }
-}
+} // Resolvendo 3 ...
 
-//Atividade complementar
+
 static void VendasCarros()
 {
     Dictionary<string, List<int>> vendasCarros = new Dictionary<string, List<int>> 
@@ -208,8 +227,15 @@ static void VendasCarros()
     };
     //Calculando média
     double mediaVendasBugatti = vendasCarros["Bugatti Veyron"].Average();
-    Console.WriteLine("Média de vendas do Bugatti Veyron: " + mediaVendasBugatti);
-}
+    Console.WriteLine($"Média de vendas do Bugatti Veyron: {mediaVendasBugatti}");
+
+    double mediaVendasKoenigsegg = vendasCarros["Koenigsegg Agera RS"].Average();
+    Console.WriteLine($"Média de vendas do Koenigsegg Agera RS: {mediaVendasBugatti}");
+
+    double mediaVendasLamborghini = vendasCarros["Lamborghini Aventador"].Average();
+    Console.WriteLine($"Média de vendas do Lamborghini Aventador: {mediaVendasLamborghini}");
+} // Atividade complementar ...
+
 
 // Executando
-VendasCarros();
+Menu();
