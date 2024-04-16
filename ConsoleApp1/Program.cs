@@ -45,7 +45,7 @@ void Menu()
         case 2: ListaBandas(); break;
         case 3: Avaliar(); break;
         case 4: MediaAvaliacao(); break;
-        case 5: Console.WriteLine("Opção escolhida: " + opcaoN); break;
+        case 5: Sair(); break;
         default: Console.WriteLine("Opção inválida!"); break;
     }
 }
@@ -147,7 +147,7 @@ void Sair()
 {
     Console.WriteLine(Menu + "\nSaindo do programa...");
     Thread.Sleep(3000);
-    
+    Environment.Exit(0);
 }
 
 void ExibirTituloDaOpcao(string titulo)
